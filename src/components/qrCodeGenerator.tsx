@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import QRCode from 'qrcode.react';
 
 const QRCodeGenerator: React.FC = () => {
@@ -6,11 +6,18 @@ const QRCodeGenerator: React.FC = () => {
   const [qrCodeData, setQRCodeData] = useState('');
   const qrCodeRef = useRef<any>(null);
   const [error, setError] = useState('');
-
+  useEffect(() => {
+    const savedQRCodeData = localStorage.getItem('qrCodeData');
+    if (savedQRCodeData) {
+      setQRCodeData(savedQRCodeData);
+    }
+  }, []);
   const generateQRCode = () => {
     try {
       if (data.trim() !== '') {
         setQRCodeData(data);
+        // Save the generated QR code data to localStorage
+        localStorage.setItem('qrCodeData', data);
         setError('');
       } else {
         setQRCodeData('');
@@ -62,3 +69,4 @@ const QRCodeGenerator: React.FC = () => {
 };
 
 export default QRCodeGenerator;
+
