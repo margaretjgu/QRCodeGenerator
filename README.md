@@ -1,7 +1,9 @@
 # QR Code Generator 
 
 Using React and eventually DALL-E integration to auto generate cute QR codes like dis: 
-<img width="596" alt="image" src="https://github.com/margaretjgu/QRCodeGenerator/assets/136839162/7b22c754-9471-4378-9039-bd753b367abf">
+
+<img width="333" alt="image" src="https://github.com/margaretjgu/QRCodeGenerator/assets/136839162/8b5ad2b3-48d1-4ae7-b149-6aaf59ef33b4">
+
 
 ### `npm start`
 
