@@ -28,3 +28,12 @@ Your app is ready to be deployed!
 3. enable developer mode (top right corner)
 4. select `load unpacked` on top left corner
 5. upload only the `build` folder that was generated when executing step 1
+
+### To do
+- [X] persist existing QR codes when navigating between tabs
+  - [X] display URL link of prev QA code
+- [ ] new ACTION to generate QR for current tab (without pasting URL)
+- [ ] new ACTION to generate shortened URL - bitly integration
+  - [ ] use `chrome.storage`/`chrome.sync` instead of `localStorage`
+  - [ ] integrate bitly accounts/users
+- [ ] UI/UX redesign 
