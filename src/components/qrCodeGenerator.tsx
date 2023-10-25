@@ -3,20 +3,29 @@ import QRCode from 'qrcode.react';
 
 const QRCodeGenerator: React.FC = () => {
   const [data, setData] = useState('');
+  const [url, setUrl] = useState('');
+
   const [qrCodeData, setQRCodeData] = useState('');
   const qrCodeRef = useRef<any>(null);
   const [error, setError] = useState('');
   useEffect(() => {
     const savedQRCodeData = localStorage.getItem('qrCodeData');
+    const savedUrl = localStorage.getItem('url');
+
     if (savedQRCodeData) {
-      setQRCodeData(savedQRCodeData);
+        setQRCodeData(savedQRCodeData);
+    }
+    if (savedUrl) {
+        setUrl(savedUrl);
     }
   }, []);
   const generateQRCode = () => {
     try {
       if (data.trim() !== '') {
+        setUrl(data);
         setQRCodeData(data);
         // Save the generated QR code data to localStorage
+        localStorage.setItem('url', data);
         localStorage.setItem('qrCodeData', data);
         setError('');
       } else {
@@ -61,7 +70,8 @@ const QRCodeGenerator: React.FC = () => {
       </div>
       {qrCodeData && (
         <div>
-          <button onClick={downloadQRCode}>Download QR Code</button>
+            <div><a href={url}>{url}</a></div>
+            <button onClick={downloadQRCode}>Download QR Code</button>
         </div>
       )}
     </div>
